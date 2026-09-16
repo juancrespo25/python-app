@@ -61,6 +61,9 @@ password: I-BVu9Sexh1ku5OK
 
 127.0.0.1 argocd.test.com
 
+## Si agregas el dns al hosts entonces puedes hacer forward al puerto 443
+kubectl port-forward svc/argocd-server -n argocd 443:443
+
 ## Validar los pods de namespace argocd
 
 kubectl get pods -n argocd
