@@ -18,8 +18,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Set short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::6}" >> $GITHUB_ENV
+      -
         name: Build and push
         uses: docker/build-push-action@v7
         with:
+          context: .
           push: true
-          tags: juancrespo25/python-app:${GITHUB_SHA::6}
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/python-app:${{ env.SHORT_SHA }}
