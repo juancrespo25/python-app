@@ -1,0 +1,15 @@
+replicaCount: 2
+name: flask-app
+namespace: flask-app
+image:
+  repository: juancrespo25/python-app
+  tag: v2
+deployment:
+  port: 5000
+service:
+  port: 80
+gateway:
+  name: api-gateway
+  namespace: ns-gateway-api
+  className: nginx
+  port: 80
