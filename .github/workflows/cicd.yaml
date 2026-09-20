@@ -6,6 +6,7 @@ on:
       - src/**
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   ci:
@@ -47,5 +48,5 @@ jobs:
         name: Argocd app sync
         shell: bash
         run: |
-          argocd login argocd-server.argocd --insecure --username ${{ secrets.ARDOCD_ADMIN }} --password ${{ secrets.ARDOCD_PASSWORD }}
+          argocd login argocd-server.argocd --insecure --username ${{ secrets.ARGOCD_ADMIN }} --password ${{ secrets.ARGOCD_PASSWORD }}
           argocd app sync python-app
