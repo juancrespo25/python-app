@@ -1,4 +1,4 @@
-name: ci
+name: cicd
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  docker:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - 
@@ -31,3 +31,14 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/python-app:${{ env.COMMIT_ID }}
     outputs:
       commit_id: ${{ env.COMMIT_ID }}
+
+  cd:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+      - 
+        name: Argocd app sync
+        shell: bash
+        run: |
+          argocd login argocd-server.argocd --insecure --username ${{ secrets.ARDOCD_ADMIN }} --password ${{ secrets.ARDOCD_PASSWORD }}
+          argocd app sync python-app
