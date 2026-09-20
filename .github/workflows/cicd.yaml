@@ -42,7 +42,6 @@ jobs:
         run: |
           curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v3.5.3/argocd-linux-amd64
           chmod +x /tmp/argocd
-          mv /tmp/argocd /usr/local/bin/argocd
           echo "/tmp" >> "$GITHUB_PATH"
       - 
         name: Argocd app sync
