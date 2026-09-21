@@ -9,7 +9,7 @@ app = Flask(__name__)
 def details():
     return  jsonify({
         'time': datetime.datetime.now().strftime("%I:%M:%S %p on %B %d, %Y"),
-        'message': 'You are doing great animals...! <3',
+        'message': 'You are doing great animals...!',
         'hostname': socket.gethostname()
     })
 
