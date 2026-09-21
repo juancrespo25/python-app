@@ -40,30 +40,30 @@ jobs:
     needs: ci
     runs-on: self-hosted
     steps:
-      -
+      - name: Clonar repositorio
         uses: actions/checkout@v3
-      -
-        name: Update values.yaml with new image tag
+
+      - name: Update values.yaml with new image tag
         shell: bash
         run: |
           curl -sSL -o /tmp/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
           chmod +x /tmp/yq
           /tmp/yq -i '.image.tag = "${{ needs.ci.outputs.commit_id }}"' charts/flask-app-chart/values.yaml
           cat charts/flask-app-chart/values.yaml
-      -
-        name: Commit changes
+  
+      - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
           message: 'Updates values.yaml with commit ${{ needs.ci.outputs.commit_id }}'
-      -
-        name: Install ArgoCD CLI
+  
+      - name: Install ArgoCD CLI
         shell: bash
         run: |
           curl -sSL -o /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v3.5.3/argocd-linux-amd64
           chmod +x /tmp/argocd
           echo "/tmp" >> "$GITHUB_PATH"
-      -
-        name: Argocd app sync
+  
+      - name: Argocd app sync
         shell: bash
         run: |
           argocd login argocd-server.argocd --insecure --username ${{ secrets.ARGOCD_ADMIN }} --password ${{ secrets.ARGOCD_PASSWORD }}
