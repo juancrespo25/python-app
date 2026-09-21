@@ -3,7 +3,7 @@ name: flask-app
 namespace: flask-app
 image:
   repository: juancrespo25/python-app
-  tag: 643aaf
+  tag: a91b19
 deployment:
   port: 5000
 service:
