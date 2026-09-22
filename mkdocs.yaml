@@ -1,7 +1,7 @@
 site_name: 'python-app'
 site_description: 'Main documentation for python-app'
 repo_url: https://github.com/juancrespo25/python-app
-edit_uri: edit/main/docs
+docs_dir: docs # Markdown. Nunca ".". Sin cambio.
 
 plugins:
   - techdocs-core
