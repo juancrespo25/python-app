@@ -9,4 +9,5 @@ plugins:
 # For sidebar navigation on https://backstage.io/, see `microsite/sidebars.js`
 nav:
   - Overview:
-      - Getting started?: index.md
+      - Getting started: index.md
+      - Arquitectura: arquitectura.md 
