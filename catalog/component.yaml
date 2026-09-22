@@ -6,6 +6,7 @@ metadata:
   description: Python app that display time.
   annotations:
     github.com/project-slug: juancrespo25/python-app
+    backstage.io/techdocs-ref: dir:.. # Docs en raíz.
 spec:
   type: service
   owner: development
