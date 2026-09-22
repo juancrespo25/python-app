@@ -1,0 +1,12 @@
+# python-app/catalog/component.yaml  (archivo nuevo)
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-app
+  description: Python app that display time.
+  annotations:
+    github.com/project-slug: juancrespo25/python-app
+spec:
+  type: service
+  owner: development
+  lifecycle: experimental
